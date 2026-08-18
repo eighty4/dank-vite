@@ -1,0 +1,48 @@
+{
+    "name": "dank-vite",
+    "version": "0.0.1",
+    "type": "module",
+    "license": "MIT",
+    "author": "Adam McKee Bennett <adam.be.g84d@gmail.com>",
+    "description": "Make DANK webapps with Vite",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/eighty4/dank-vite"
+    },
+    "engines": {
+        "node": ">=24"
+    },
+    "devEngines": {
+        "packageManager": {
+            "name": "pnpm",
+            "version": "11.22.0"
+        }
+    },
+    "exports": {
+        ".": {
+            "types": "./lib_types/plugin.d.ts",
+            "import": "./lib_js/plugin.js"
+        }
+    },
+    "scripts": {
+        "build": "tsc",
+        "fmt": "prettier --write .",
+        "fmtcheck": "prettier --check .",
+        "typecheck": "tsc -p tsconfig.typecheck.json"
+    },
+    "devDependencies": {
+        "@eighty4/dank": "^0.0.6",
+        "@types/node": "^26.2.0",
+        "prettier": "^3.9.6",
+        "typescript": "^7.0.2",
+        "vite": "^8.2.1"
+    },
+    "dependencies": {
+        "parse5": "^8.0.1"
+    },
+    "files": [
+        "client/*.js",
+        "lib_js/*.js",
+        "lib_types/*.d.ts"
+    ]
+}
