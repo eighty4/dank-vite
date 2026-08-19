@@ -28,6 +28,25 @@ jobs:
           runtime: ${{ env.RUNTIME }}
       - run: pnpm fmtcheck
 
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/setup@v2
+        with:
+          runtime: ${{ env.RUNTIME }}
+      - run: pnpm build
+      - run: node scripts/copy_sources.ts
+      - run: pnpm exec playwright install --with-deps
+      - run: pnpm exec playwright test
+      - uses: actions/upload-artifact@v7
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
+
   typecheck:
     runs-on: ubuntu-latest
     steps:

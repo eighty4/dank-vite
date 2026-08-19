@@ -1,5 +1,7 @@
 allowBuilds:
   esbuild: false
 
-minimumReleaseAgeExclude:
-  - '@eighty4/dank'
+minimumReleaseAge: 0
+
+packages:
+  - tests/apps/*
